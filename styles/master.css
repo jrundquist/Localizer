@@ -1,0 +1,141 @@
+body{ 
+	font-family: 'Jura', arial, serif;
+	overflow-x: hidden;
+}
+a { 
+	color:#099;
+}
+
+
+h1 { 
+	font-size: 25px;
+	margin: 10px;
+}
+h3 { 
+	margin:5px;
+}
+
+
+.shadow { 
+	-moz-box-shadow: 0 0 8px #000;
+  	-webkit-box-shadow: 0 0 8px #000;
+  	box-shadow: 0 0 8px #000;
+}
+
+
+section#top-bar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background: #fff;
+}
+
+
+section#map{
+	position: fixed; 
+	top: 50px; /*Set top value to HeightOfTopFrameDiv*/
+	left: 0;
+	right: 0;
+	bottom: 30px; /*Set bottom value to HeightOfBottomFrameDiv*/
+	overflow: auto; 
+	background: #fff;
+}
+section#map #map_canvas{
+	width:100%;
+	height:100%;
+}
+
+
+section#login.out{
+	left: -120%;
+}
+section#login{
+	position: fixed;
+	top: 50%;
+	left: 0;
+	margin-top: -100px;
+	height: 200px;
+	width: 100%;
+	background: #fff;
+	
+	background: #999; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#bbbbbb'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#bbb)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #fff,  #bbb); /* for firefox 3.6+ */
+	
+	-webkit-transition: all 1s ease-in;
+	-moz-transition: all 1s ease-int;
+	-o-transition: all 1s ease-in;
+	-ms-transition: all 1s ease-in;		
+	transition: all 1s ease-in;
+}
+
+section#login-form{
+	margin: 0 auto;
+	width: 500px;
+	height: 300px;
+	margin-top: -50px;
+	background: #fff;
+	
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	position:relative;
+}
+#login-form #login-spacer{
+	padding: 20px 20px 20px 40px;
+}
+#login-form h1{
+	font-weight: 600;
+	margin:10px 0px 20px -10px;
+	font-size: 40px;
+	text-shadow: -1px 1px 0px #ccc;
+	display:inline;
+}
+#login-form h3{
+	display:inline;
+}
+#login-form header{
+	margin-bottom:20px;
+}
+
+#login-form label{
+	display: block;
+	font-size:18px;
+}
+#login-form input{
+	margin: 5px 0 25px 0;
+	font-size:20px;
+	padding: 5px;
+	width: 400px;
+	text-shadow: -1px 1px 1px #ccc;
+	border: 1px solid #666;
+	-moz-box-shadow: 0 0 5px #222 inset;
+	-webkit-box-shadow: 0 0 5px #222 inset;
+	box-shadow: 0 0 5px #222 inset;
+	background: rgba(0,0,0,.1);
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	outline:none;
+}
+#login-form input:focus{
+	outline:none;
+	background: rgba(0,0,0,.07);
+	
+}
+#login-form button{
+	float: right;
+	
+}
+section#bottom-bar{
+	position:absolute;
+	bottom:0px;
+	height:30px;
+	width:100%;
+	background: #fff;
+}
+
+#map_canvas{
+	magrin: 20px 0;
+}
