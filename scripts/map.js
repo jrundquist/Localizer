@@ -42,7 +42,7 @@ function showMap(position) {
 			mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'custom']
 		}
 	}
-
+	
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
 	var styledMapOptions = {
@@ -63,14 +63,32 @@ function showMap(position) {
 	      new google.maps.Point(10, 64));
 	
 	
+	// Add the You are Here Flag
 	var marker = new google.maps.Marker({
 	        position: myloc,
 	        map: map,
 			icon: image
 		});
+		
+		
+		
+	/// Add the click handler
+	google.maps.event.addListener(map, 'click', function(event) {
+    	placeMarker(event.latLng);
+  	});
+	
 	
 }
 
+
+function placeMarker(location) {
+  var marker = new google.maps.Marker({
+      position: location, 
+      map: map
+  });
+
+  map.panTo(location);
+}
 function initializeMap() {
 	// One-shot position request.
 	navigator.geolocation.getCurrentPosition(showMap);
