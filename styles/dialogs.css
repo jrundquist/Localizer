@@ -32,3 +32,29 @@ section#create-form button#submit-create{
 	margin: 10px;
 	margin-left: 405px;
 }
+#settings-underlay{
+	position: fixed; 
+	top: 50px; /*Set top value to HeightOfTopFrameDiv*/
+	left: 0;
+	right: 0;
+	bottom: 30px; /*Set bottom value to HeightOfBottomFrameDiv*/
+	overflow: auto; 
+	background:rgba(255,255,255,.4);
+	display: none;
+}
+#settings { 
+}
+#settings header { 
+	font-size: 30px;
+}
+#settings section#user-summary{ 
+	float: left;
+	margin: 20px;
+}
+.user-changes:first-child {
+	margin-top: 200px;
+}
+.user-changes {
+	margin-left: 200px;
+}
+

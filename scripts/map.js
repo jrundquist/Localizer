@@ -116,7 +116,36 @@ function placePing(location){
   return ping ;
 }
 
+
+function noLocation(error){
+	if ( error.code == error.PERMISSION_DENIED ){
+		$('#map_canvas .error').html('<h1>Location Permission has been Denied</h1><h2>TheLocalizer needs permission to access your location.</h2><h3>Please enable location sharing for this site. Instructions on doing so can be found <a href="http://www.google.com/support/chrome//support/chrome/bin/answer.py?answer=142065" target="_blank">here</a>.</h3>');
+	}else{
+		console.log(error);
+	}
+}
+
+
+function RequestPermission(callback) {
+  window.webkitNotifications.requestPermission(callback);
+}
+
+function notif() {
+  if (window.webkitNotifications.checkPermission() > 0) {
+    RequestPermission(notif);
+  } else {
+    notification = window.webkitNotifications.createHTMLNotification('http://localhost:3000/images/rails.png');
+    notification.show();
+  }
+}
+
 function initializeMap() {
 	// One-shot position request.
-	navigator.geolocation.getCurrentPosition(showMap);
+	navigator.geolocation.getCurrentPosition(showMap, 
+											noLocation,
+											{
+												enableHighAccuracy: true,
+												timeout: 5000,
+												maximumAge: 60
+											});
 }

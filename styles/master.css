@@ -197,7 +197,16 @@ section#bottom-bar{
 	height:30px;
 	width:100%;
 	background: #fff;
+	-webkit-transition: all 200ms ease-in;
+	-moz-transition: all 200ms ease-int;
+	-o-transition: all 200ms ease-in;
+	-ms-transition: all 200ms ease-in;		
+	transition: all 200ms ease-in;
 }
+section#bottom-bar.hilight{
+	background: #FFFF9C;
+}
+
 section#bottom-bar footer{
 	font-size:13px;
 	position: fixed;
@@ -207,4 +216,96 @@ section#bottom-bar footer{
 
 #map_canvas{
 	magrin: 20px 0;
+}
+
+#map_canvas .error{
+	position:absolute;
+	top: 40px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+#map_canvas .error h1{ 
+	font-size: 30px;
+	font-weight: 600;
+}
+
+
+
+div#activity-box{ 
+	position: absolute;
+	top: 80px; 
+	right: 30px;
+	width: 200px;
+	min-height: 100px;
+	max-height: 75%;
+	background-color: #fff;	
+	padding: 10px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	border:1px solid #222;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.9;
+	-khtml-opacity: 0.9;
+	opacity: 0.9;
+	text-shadow: 0 0 3px #fff;
+	overflow: hidden;
+	display: none;
+}
+div#activity-box header{ 
+	font-size: 20px;
+	border-bottom: 1px solid #222;
+	padding-bottom: 4px;
+	text-align: right;
+}
+
+div#activity-box section.activity{
+	border-bottom: 1px solid #aaa;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding: 2px;
+}
+div#activity-box section.activity:hover{
+	background: #E6E6E6;
+	-moz-box-shadow: 0 0 4px #000;
+  	-webkit-box-shadow: 0 0 4px #000;
+  	box-shadow: 0 0 4px #000;
+}
+div#activity-box section.activity:last-child{
+	border-bottom: none;
+}
+section.activity h1 { 
+	padding: 0 5px 0 32px;
+	font-size: 20px;
+	font-weight: bold;
+	min-height: 24px;
+	margin: 5px 0;
+	cursor: pointer;
+}
+section.activity h1.create{ 
+	background: url('/images/Billboard24.png') 2px  5px no-repeat;
+}
+section.activity h1.respond{ 
+	background: url('/images/Communicate24.png') 2px  5px no-repeat;
+}
+section.activity div.reply{
+	text-decoration: underline;
+	font-size: 30px;
+	font-weigh: 600;
+	color: #008040;
+	margin: 0 0 0 30px;
+	padding: 0;
+	cursor: pointer;
+}
+section.activity div.reply small{
+	font-size: 18px;
+}
+section.activity .info{
+	margin: 10px 0;
+	width: 100%;
+	text-align: right;
+}
+section.activity p{ 
+	
 }

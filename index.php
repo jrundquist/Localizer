@@ -20,28 +20,37 @@
 		<script type="text/javascript" src="/scripts/login.js"></script>
 		<script type="text/javascript" src="/scripts/search.js"></script>
 		<script type="text/javascript" src="/scripts/submit.js"></script>
+		<script type="text/javascript" src="/scripts/settings.js"></script>
+
 		<!-- <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.0/src/infobox_packed.js"></script> -->
 	</head>
 	
 	<body>
 		<section id="map">
-			<div id="map_canvas"></div>
+			<div id="map_canvas">
+				<div class="error">
+					<h1>Location Permission Necessary</h1>
+					<h3>The Localizer requires permission to access your location.</h3>
+					<h3>This information is kept private and is never stored</h3>
+				</div>
+			</div>
 		</section>
 		<section id="top-bar" class="shadow">
 			<h1>The Localizer</h1>
 			<nav> 
 				<a href="javascript:startSubmit();">Submit</a>
 				<a href="/respond/">Respond</a>
-				<a href="/settings/">Settings</a>
+				<a href="javascript:openSettings();">Settings</a>
 			</nav>
 			<section id="top-bar-search">
 				<input id="search-input" type="text" results="5" name="search" size="large" placeholder="Search Archives" onKeyPress="doOnEnter(this, event, preformSearch)">
 			</section>
 		</section>
 		<section id="bottom-bar" class="shadow">
-			<h3>Click Anywhere to Create a Ping</h3>
+			<h3 id="bottom-notes">Click Anywhere to Create a Ping</h3>
+
 			<footer>
-				&copy; Team JCKG 2011
+				<a href="javascript:doLogout();location.reload(true);">Logout</a>
 			</footer>
 		</section>
 		
@@ -65,11 +74,34 @@
 			</section>
 		</section>
 
-		<div id="message-box" class="shadow">
-
+		<div id="settings-underlay">
+		</div>
+		<div id="message-box" class="shadow"></div>
+		<div id="activity-box" class="shadow">
+			<header>Recent Activity</header>
+			<section class="activity">
+				<h1 class="create">Where is a good place to eat?</h1>
+				<div class="info">
+					<p>ping sent 2 minutes ago</p>
+				</div>
+			</section>
+			<section class="activity">
+				<h1 class="create">Any good pubs around here?</h1>
+				<div class="reply">5 <small>new replies</small></div>
+				<div class="info">
+					<p>ping sent 1 day ago</p>
+				</div>
+			</section>
+			<section class="activity">
+				<h1 class="respond">Park G&uuml;ell is very nice!</h1>
+				<div class="info">
+					<p>reply sent 3 days ago</p>
+				</div>
+			</section>
 		</div>
 
 		<script>
+			login();
 			initializeMap();
 		</script>
 		

@@ -1,3 +1,4 @@
+
 function doOnEnter(field, e, callback){
 	var keycode;
 	if (window.event) keycode = window.event.keyCode;
@@ -38,16 +39,15 @@ actionManager.onStartCreate = function(messageBox){
 
 
 actionManager.onMapClick = function(){
-	if ( actionManager.state <= 1 ) {
-		if ( actionManager.messageBox ) {
-			actionManager.messageBox.children('.step.active').removeClass('active');
-			$('section.step:nth-of-type(2)').addClass('active');
-		}
+	actionManager.state = 2;
+	if ( actionManager.messageBox ) {
+		actionManager.messageBox.children('.step.active').removeClass('active');
+		$('section.step:nth-of-type(2)').addClass('active');
 	}
-	actionManager.state++;
 }
 
 actionManager.onCategoryPick = function(){
+	$('select#cat').find('option[value=""]').remove(); 
 	if ( actionManager.state <= 2 ) {
 		if ( actionManager.messageBox ) {
 			actionManager.messageBox.children('.step.active').removeClass('active')
@@ -67,8 +67,23 @@ actionManager.onQuestionEnter = function(){
 	actionManager.state++;
 }
 
-actionManager.onSumbitCreate = function(){
+actionManager.onSumbitCreate = function(txt, cat){
 	actionManager.state = 4;
-	if ( actionManager.messageBox ) 
+	if ( actionManager.messageBox ) {
 		actionManager.messageBox.fadeOut();
+		console.log(createBox);
+	}
+	
+	$('#activity-box section.activity:first').before('<section class="activity new" style="display:none">\
+		<h1 class="create">'+txt+'</h1>\
+		<div class="info">\
+			<p>ping sent seconds ago</p>\
+		</div>\
+	</section>');
+	$('#activity-box section.activity.new').slideDown().removeClass('new');
+	
+	
+	$('#bottom-notes').html('Your Ping Has Been Sumbitted');
+	$('#bottom-bar').addClass('hilight');
+	setTimeout('$("#bottom-bar").removeClass("hilight")', 1000);
 }
