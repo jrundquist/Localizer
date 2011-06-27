@@ -8,14 +8,19 @@
 		</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<link rel="stylesheet" type="text/css" href="/styles/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/buttons.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/master.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/messaging.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/dialogs.css" />
+		<link href='http://fonts.googleapis.com/css?family=Jura:light,regular,500,600&v1' rel='stylesheet' type='text/css'>
+		
 		<script type="text/javascript" src="/scripts/main.js"></script>
 		<script type="text/javascript" src="/scripts/map.js"></script>
 		<script type="text/javascript" src="/scripts/login.js"></script>
 		<script type="text/javascript" src="/scripts/search.js"></script>
-		<link rel="stylesheet" type="text/css" href="/styles/reset.css" />
-		<link rel="stylesheet" type="text/css" href="/styles/buttons.css" />
-		<link rel="stylesheet" type="text/css" href="/styles/master.css" />
-		<link href='http://fonts.googleapis.com/css?family=Jura:light,regular,500,600&v1' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="/scripts/submit.js"></script>
+		<!-- <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.0/src/infobox_packed.js"></script> -->
 	</head>
 	
 	<body>
@@ -25,7 +30,7 @@
 		<section id="top-bar" class="shadow">
 			<h1>The Localizer</h1>
 			<nav> 
-				<a href="/submit/">Submit</a>
+				<a href="javascript:startSubmit();">Submit</a>
 				<a href="/respond/">Respond</a>
 				<a href="/settings/">Settings</a>
 			</nav>
@@ -59,9 +64,15 @@
 				</div>
 			</section>
 		</section>
-		
+
+		<div id="message-box" class="shadow">
+
+		</div>
+
 		<script>
 			initializeMap();
 		</script>
+		
+		
 	</body>
 </html>

@@ -1,4 +1,6 @@
 var map;
+var createMarker;
+var createBox;
 function showMap(position) {
 	
 	var stylez = [
@@ -71,24 +73,49 @@ function showMap(position) {
 		});
 		
 		
-		
-	/// Add the click handler
-	google.maps.event.addListener(map, 'click', function(event) {
-    	placeMarker(event.latLng);
-  	});
-	
-	
+	actionManager.mapOnClickAddPing();
 }
 
 
+google.maps.Map.prototype.clearMarkers = function() {
+    if ( !this.markers ) return;
+	for(var i=0; i < this.markers.length; i++){
+        this.markers[i].setMap(null);
+    }
+    this.markers = new Array();
+};
+
 function placeMarker(location) {
-  var marker = new google.maps.Marker({
+  createMarker = new google.maps.Marker({
       position: location, 
       map: map
   });
-
   map.panTo(location);
+  return createMarker;
 }
+
+function showCreateWindow(marker) {
+	if ( createBox ) createBox.close();
+	
+	$.get('/ajax/create-form.html', function(data) {
+	  	createBox = new google.maps.InfoWindow({ 
+			content: data,
+		}); 
+		createBox.open(map, marker);
+	});
+	
+}
+
+function placePing(location){
+  ping = new google.maps.Marker({
+      position: location, 
+	  animation: google.maps.Animation.DROP,
+      map: map
+  });
+  map.panTo(location);
+  return ping ;
+}
+
 function initializeMap() {
 	// One-shot position request.
 	navigator.geolocation.getCurrentPosition(showMap);

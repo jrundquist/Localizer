@@ -1,0 +1,21 @@
+<section id="create-form"> 
+	<h1>Create Ping</h1>
+	
+	<label>Category</label>
+	<select id="cat" name="cat" onChange="actionManager.onCategoryPick()">
+		<option value=""></option>
+		<option value="restaurant">Restaurants</option>
+		<option value="activities">Activities</option>
+		<option value="entertainment">Entertainment</option>
+		<option value="accommodations">Accommodations</option>
+		<option value="night-life">Night Life</option>
+		<option value="shopping">Shopping</option>
+		<option value="transportation">Transportation</option>
+		<option value="sights">Sights</option>
+	</select>
+	<label>Question</label>
+	<textarea id="question" name="question" onBlur="actionManager.onQuestionEnter()"/></textarea>
+	
+	<button type="button" id="submit-create" class="clean-gray" onClick="submitForm()">Submit</button>
+	
+</section>
