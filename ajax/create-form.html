@@ -4,14 +4,15 @@
 	<label>Category</label>
 	<select id="cat" name="cat" onChange="actionManager.onCategoryPick()">
 		<option value=""></option>
-		<option value="restaurant">Restaurants</option>
-		<option value="activities">Activities</option>
-		<option value="entertainment">Entertainment</option>
 		<option value="accommodations">Accommodations</option>
-		<option value="night-life">Night Life</option>
+		<option value="entertainment">Entertainment</option>
+		<option value="nightlife">Night Life</option>
+		<option value="restaurants">Restaurants</option>
 		<option value="shopping">Shopping</option>
-		<option value="transportation">Transportation</option>
 		<option value="sights">Sights</option>
+		<option value="transportation">Transportation</option>
+		<option value="other">-- Other --</option>
+		
 	</select>
 	<label>Question</label>
 	<textarea id="question" name="question" onBlur="actionManager.onQuestionEnter()"/></textarea>

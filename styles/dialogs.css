@@ -58,3 +58,77 @@ section#create-form button#submit-create{
 	margin-left: 200px;
 }
 
+
+.bubble-response-text{
+	margin-top: 10px;
+	font-weight: thin;
+	border-top: 1px solid #ccc;
+	padding: 5px;
+	cursor: pointer;
+}
+.bubble-response-text strong{ 
+	font-weight: bold;
+}
+.bubble-respond { 
+	width: 100%;
+	margin-top: 15px;
+	text-align: right;
+}
+
+
+
+
+
+
+
+
+section#answer-form{
+	text-align: left;
+	margin: 0;
+	padding: 0;
+	width: 400px;
+}
+
+section#answer-form h1{
+	width: 400px;
+	border-bottom: 1px solid #ccc;
+}
+
+section#answer-form h2{
+	margin-left: 0px;
+	font-size: 30px;
+	padding: 6px 20px;
+	width: 400px;
+	text-shadow: -1px 1px 0 #ccc;
+}
+
+section#answer-form label{
+	font-size: 19px;
+	color: #777;
+	display: block;
+	margin: 5px 0 5px 20px;
+}
+
+section#answer-form select{
+	width: 300px;
+	text-align:center;
+	font-size: 16px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+section#answer-form textarea{
+	width: 382px;
+	height: 56px;
+	border-radius: 10px;
+	outline: none;
+	padding: 10px;
+	font-size: 20px;
+	text-shadow: -1px 1px 0 #ccc;
+	margin-left: 20px;
+	
+}
+section#answer-form button#submit-answer{
+	margin: 10px;
+	margin-left: 261px;
+	width: 165px;
+}

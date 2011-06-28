@@ -3,41 +3,11 @@ var createMarker;
 var createBox;
 function showMap(position) {
 	
-	var stylez = [
-		// {
-		// 	featureType: "all",
-		// 	elementType: "all",
-		// 	stylers: [
-		// 		{ invert_lightness: true }
-		// 	]
-		// },{
-		// 	featureType: "poi",
-		// 	elementType: "all",
-		// 	stylers: [
-		// 		{ visibility: "off" }
-		// 	]
-		// },{
-		// 	featureType: "road",
-		// 	elementType: "all",
-		// 	stylers: [
-		// 		{ visibility: "simplified" },
-		// 		{ saturation: -60 }
-		// 	]
-		// },{
-		// 	featureType: "administrative.province",
-		// 	elementType: "all",
-		// 	stylers: [
-		// 		{ visibility: "on" },
-		// 		{ gamma: 0.74 },
-		// 		{ lightness: 33 }
-		// 	]
-		// }
-
-	];
+	var stylez = [];
 
 	var myloc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
-		zoom: 15,
+		zoom: 13,
 		disableDefaultUI: true,
 		center: myloc,
 		mapTypeControlOptions: {
@@ -74,6 +44,7 @@ function showMap(position) {
 		
 		
 	actionManager.mapOnClickAddPing();
+	actionManager.mapOnLoad();
 }
 
 
@@ -101,6 +72,9 @@ function showCreateWindow(marker) {
 	  	createBox = new google.maps.InfoWindow({ 
 			content: data,
 		}); 
+		google.maps.event.addListener(createBox,'closeclick', function() { 
+			createMarker.setMap(null); 
+		});
 		createBox.open(map, marker);
 	});
 	

@@ -24,7 +24,6 @@ function validateLogin(){
 	$('section#login-cover').fadeOut('slow');
 	
 }
-
 function checkLogin(){
 	var ca = document.cookie.split(';');
 	for(var i=0;i < ca.length;i++) {
@@ -53,3 +52,20 @@ function login(){
 		return true;
 	}
 }
+
+
+
+function doOnEnter(field, e, callback){
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	else return true;
+
+	if (keycode == 13){
+		callback();
+		return false;
+	}else{
+		return true;
+	}
+}
+
