@@ -1,7 +1,7 @@
 Location = function(lat, lon){
-	if ( typeof(lat) == "object" && lat.hasOwnProperty('Ha') ){ 
-		this.lat = lat.Ha;
-		this.lon = lat.Ia;
+	if ( typeof(lat) == "object" ){ 
+		this.lat = lat.lat();
+		this.lon = lat.lng();
 	}else{		
 		this.lat = lat;
 		this.lon = lon;

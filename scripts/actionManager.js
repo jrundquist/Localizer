@@ -2,7 +2,6 @@ var actionManager = function(){
 }
 
 actionManager.mapOnLoad = function(){
-	console.log('here');
 	for(var i=0; i<sentPingsList.length; i++){
 		sentPingsList[i].addToMap(map);
 	}
@@ -21,11 +20,11 @@ actionManager.mapOnClickAddPing = function(){
   	});
 }
 
-actionManager.onStartCreate = function(messageBox){
-
+actionManager.onStartCreate = function(messageBox, clicked){
+	messageBox = messageBox || $('#message-box');
 	actionManager.state = 1;
 	actionManager.messageBox = messageBox;
-	actionManager.messageBox.load('ajax/create.html');
+	actionManager.messageBox.load('ajax/create.html', function(){ if (clicked){actionManager.onMapClick()}} );
 	actionManager.messageBox.fadeIn();
 }
 
@@ -59,13 +58,17 @@ actionManager.onQuestionEnter = function(){
 	actionManager.state++;
 }
 
+actionManager.onCreateClose = function(){
+	actionManager.messageBox.fadeOut();
+}
+
 actionManager.onSumbitCreate = function(txt, cat, anchor){
 	actionManager.state = 4;
 	if ( actionManager.messageBox ) {
 		actionManager.messageBox.fadeOut();
 		console.log(createBox);
 	}
-	
+
 	sentPingsList.push( new Ping({
 							location: new Location(anchor.position),
 							text: txt,
@@ -74,6 +77,16 @@ actionManager.onSumbitCreate = function(txt, cat, anchor){
 							from: 'TestUser'
 						}));
 	sentPingsList[sentPingsList.length-1].addToMap(anchor.map);
+	
+	createMarker.setMap(null);
+	
+	console.log('here', {
+							location: new Location(anchor.position),
+							text: txt,
+							category: cat,
+							created: new Date(),
+							from: 'TestUser'
+						});
 	
 	$('#activity-box section.activity:first').before('<section class="activity new" style="display:none">\
 		<h1 class="create" onClick="(sentPingsList['+(sentPingsList.length-1)+'].showDetails())">'+txt+'</h1>\

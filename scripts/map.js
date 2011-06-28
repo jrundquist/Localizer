@@ -67,13 +67,17 @@ function placeMarker(location) {
 
 function showCreateWindow(marker) {
 	if ( createBox ) createBox.close();
+  	
 	
 	$.get('/ajax/create-form.html', function(data) {
+		actionManager.onStartCreate(0, true);
+		
 	  	createBox = new google.maps.InfoWindow({ 
 			content: data,
 		}); 
 		google.maps.event.addListener(createBox,'closeclick', function() { 
 			createMarker.setMap(null); 
+			actionManager.onCreateClose();
 		});
 		createBox.open(map, marker);
 	});
