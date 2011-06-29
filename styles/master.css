@@ -99,7 +99,8 @@ section#login-cover{
 	left:0;
 	width:100%;
 	height:100%;
-	background:rgba(0,0,0,.4);
+	opacity: .8;
+	background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 5px, #111 5px, #111 10px);
 }
 
 section#login.out{
@@ -119,11 +120,11 @@ section#login{
 	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#bbb)); /* for webkit browsers */
 	background: -moz-linear-gradient(top,  #fff,  #bbb); /* for firefox 3.6+ */
 	
-	-webkit-transition: all 1s ease-in;
-	-moz-transition: all 1s ease-int;
-	-o-transition: all 1s ease-in;
-	-ms-transition: all 1s ease-in;		
-	transition: all 1s ease-in;
+	-webkit-transition: all 600ms ease-in;
+	-moz-transition: all 600ms ease-in;
+	-o-transition: all 600ms ease-in;
+	-ms-transition: all 600ms ease-in;		
+	transition: all 600ms ease-in;
 }
 
 section#login-form{
@@ -137,28 +138,43 @@ section#login-form{
 	border-radius: 15px;
 	position:relative;
 }
-#login-form #login-spacer{
+
+section#register-form{
+	margin: 0 auto;
+	width: 540px;
+	height: 550px;
+	margin-top: -175px;
+	background: #fff;
+	
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	position:relative;
+	
+	display:none;
+}
+
+#login-spacer{
 	padding: 20px 20px 20px 40px;
 }
-#login-form h1{
+#login-form h1, #register-form h1{
 	font-weight: 600;
 	margin:10px 0px 20px -10px;
 	font-size: 40px;
 	text-shadow: -1px 1px 0px #ccc;
 	display:inline;
 }
-#login-form h3{
+#login-form h3, #register-form h3{
 	display:inline;
 }
-#login-form header{
+#login-form header, #register-form header{
 	margin-bottom:20px;
 }
 
-#login-form label{
+#login-form label, #register-form label{
 	display: block;
 	font-size:18px;
 }
-#login-form input{
+#login-form input, #register-form input{
 	margin: 5px 0 25px 0;
 	font-size:20px;
 	padding: 5px;
@@ -179,15 +195,15 @@ section#login-form{
 	-ms-transition: all 200ms ease-in;		
 	transition: all 200ms ease-in;
 }
-#login-form input:focus{
+#login-form input:focus, #register-form input:focus{
 	outline:none;
 	background: rgba(0,0,0,.07);
 	
 }
-#login-form input.error{
+#login-form input.error, #register-form input.error{
 	border-color:#f00;
 }
-#login-form button{
+#login-form button, #register-form button{
 	float: right;
 	
 }
@@ -258,6 +274,7 @@ div#activity-box header{
 	border-bottom: 1px solid #222;
 	padding-bottom: 4px;
 	text-align: right;
+	word-wrap: break-word;
 }
 
 div#activity-box section.activity{
@@ -282,6 +299,8 @@ section.activity h1 {
 	min-height: 30px;
 	margin: 5px 0;
 	cursor: pointer;
+	word-wrap: break-word;
+	
 }
 section.activity h1.create{ 
 	background: url('/images/Billboard24.png') 2px  5px no-repeat;

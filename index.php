@@ -22,6 +22,7 @@
 		<script type="text/javascript" src="/scripts/search.js"></script>
 		<script type="text/javascript" src="/scripts/submit.js"></script>
 		<script type="text/javascript" src="/scripts/settings.js"></script>
+		<script type="text/javascript" src="/scripts/user.js"></script>
 		<script type="text/javascript" src="/scripts/ping.js"></script>
 		<script type="text/javascript" src="/scripts/main.js"></script>
 
@@ -67,11 +68,32 @@
 						<h1>Login</h1><h3>or <a href="javascript:changeToRegister()">Join Localizer</a>
 					</header>
 				<form onSumbit="return false;"> 
-					<label for="email">Username</label>
+					<label for="username">Username</label>
 					<input type="text" id="username" name="username"/>
 					<label for="password">Password</label>
 					<input type="password" id="password" name="password" placehoder="Password" onKeyPress="doOnEnter(this, event, validateLogin)"/>
 					<button class="clean-gray" type="button" name="login" onclick="validateLogin();">Login</button>
+				</form>
+				</div>
+			</section>
+			
+			<section id="register-form" class="shadow">
+				<div id="login-spacer">
+					<header> 
+						<h1>Join Localizer</h1><h3>or <a href="javascript:changeToLogin()">Login</a>
+					</header>
+				<form onSumbit="return false;"> 
+					<label for="r_username">Desired Username</label>
+					<input type="text" id="r_username" name="r_username" required="true"/>
+					<label for="r_fname">First Name</label>
+					<input type="text" id="r_fname" name="r_fname" required="true"/>
+					<label for="r_lname">Last Name</label>
+					<input type="text" id="r_lname" name="r_lname" required="true"/>
+					<label for="r_email">Email</label>
+					<input type="email" id="r_email" name="r_email" required="true"/>
+					<label for="r_password">Password</label>
+					<input type="password" id="r_password" name="r_password" placehoder="Password" required="true"/>
+					<button class="clean-gray" type="button" name="login" onclick="validateRegister();">Sign Up</button>
 				</form>
 				</div>
 			</section>

@@ -1,7 +1,7 @@
 <section id="create-form"> 
 	<h1>Create Ping</h1>
 	
-	<label>Category</label>
+	<label id="create-category">Category</label>
 	<select id="cat" name="cat" onChange="actionManager.onCategoryPick()">
 		<option value=""></option>
 		<option value="accommodations">Accommodations</option>
@@ -15,8 +15,13 @@
 		
 	</select>
 	<label>Question</label>
-	<textarea id="question" name="question" onBlur="actionManager.onQuestionEnter()"/></textarea>
-	
+	<textarea id="question" name="question" onBlur="actionManager.onQuestionEnter()" onKeyUp="$(this).next('#counter').html(140-$(this).attr('value').length).css({'color':''});
+	if( $(this).attr('value').length>140 ){
+		$(this).next('#counter').css({'color':'#f00','font-weight':'bold'});
+	}else if( $(this).attr('value').length >= 120 ){
+		$(this).next('#counter').css({'color':'#F80'});
+	}"/></textarea>
+	<div id="counter">140</div>
 	<button type="button" id="submit-create" class="clean-gray" onClick="submitForm()">Submit</button>
 	
 </section>

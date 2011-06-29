@@ -1,3 +1,29 @@
+function validateRegister(){
+	
+	
+	$('section#login section#register-form input').each(function(){
+		$(this).removeClass('error');
+		if ( $(this).val() == '' ){
+			$(this).addClass('error');
+		}
+	});
+	
+	$('section#login section#register-form input:invalid').each(function(){
+		$(this).addClass('error');
+	});
+	
+	if ( $('section#login section#register-form input.error').length > 0 ) {
+		return false;
+	}
+	
+	doLogin();
+	
+	$('#activity-box').fadeIn();
+	$('section#login').addClass('out');
+	$('section#login-cover').fadeOut();
+
+}
+
 function validateLogin(){
 	// Reset all errors
 	$('section#login input#password').removeClass('error');
@@ -69,3 +95,14 @@ function doOnEnter(field, e, callback){
 	}
 }
 
+
+
+function changeToRegister(){
+	$('section#login-form').slideUp();
+	$('section#register-form').slideDown();
+}
+
+function changeToLogin(){
+	$('section#login-form').slideDown();
+	$('section#register-form').slideUp();
+}

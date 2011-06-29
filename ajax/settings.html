@@ -1,3 +1,6 @@
+<div class="close-button" onClick="$('#settings-underlay').click()">x</div>
+
+
 <div id="settings">
 	<header>Settings</header>
 	<section id="user-summary"> 
@@ -16,6 +19,6 @@
 		<label for="home">Home Location</label>
 		<input type="text" name="home" id="home" value="Atlanta, GA, USA" />
 		<label for="distance">Max distance to send ping</label>
-		<input type="range" name="distance" min="5" max="20" step="5" value="10" onChange="$('#slider-val').html($(this).val()+' km')"><span id="slider-val">5 km</span>
+		<input type="range" name="distance" id="distance" min="5" max="20" step="5" value="10" onChange="$('#slider-val').html($(this).val()+' km')"><span id="slider-val">5 km</span>
 	</section>
 </div>

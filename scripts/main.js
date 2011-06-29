@@ -1,3 +1,6 @@
+var user = new User();
+
+
 var sentPingsList = new Array();
 var respondedToList = new Array();
 
@@ -17,7 +20,7 @@ respondedTo.addResponse( new Ping({
 						text: 'Not in Spain!',
 						category: 'Other',
 						created: new Date(2011, 6, 25, 11, 45, 40, 4),
-						from: 'TestUser'
+						from: user.username
 					}));
 
 respondedToList.push(respondedTo);
@@ -28,14 +31,14 @@ sentPingsList.push( new Ping({
 						text: 'Where can I get some good Fish?',
 						category: 'Restaurants',
 						created: new Date(2011, 6, 27, 20, 04, 34, 2),
-						from: 'TestUser'
+						from: user.username
 					}));
 sentPingsList.push( new Ping({
 						location: new Location(41.3875,2.1199),
 						text: 'I hear there is a Rose garden out here?',
 						category: 'Sights',
 						created: new Date(2011, 6, 25, 20, 04, 34, 2),
-						from: 'TestUser'
+						from: user.username
 					}));
 sentPingsList[1].addResponse( new Ping({
 						location: new Location(41.3939,2.1846),

@@ -104,15 +104,34 @@ Ping.prototype.createMarker = function(){
 	      // The anchor for this image is the base of the flagpole at 0,32.
 	      new google.maps.Point(16, 37));
 	
+	shadow = new google.maps.MarkerImage("/images/map/shadow.png",
+		new google.maps.Size(51.0, 37.0),
+		new google.maps.Point(0, 0),
+		new google.maps.Point(16.0, 37));
+
 	this.marker = new google.maps.Marker({
 		position: this.location.toGoogle(),
-		icon: image 
+		icon: image,
+		shadow: shadow
 	});
 	
 	this.marker._ping = this; 
+	this.marker.__clicked = false;
 	
 	google.maps.event.addListener(this.marker, 'click', function() {
 	    this._ping.showDetails();
+		this._ping.showResponses();
+		this.__clicked = true;
+	  });
+	
+	google.maps.event.addListener(this.marker, 'mouseover', function() {
+		this._ping.showResponses();
+	  });
+	
+	google.maps.event.addListener(this.marker, 'mouseout', function() {
+		if ( this.__clicked != true ){
+			this._ping.hideResponses();
+		}
 	  });
 	
 	this.createInfoWindow();
@@ -149,6 +168,14 @@ Ping.prototype.createInfoWindow = function(){
 	this.infoWindow = new google.maps.InfoWindow({ 
 		content: cont[0]
 	});
+	
+	this.infoWindow._ping = this; 
+	
+	google.maps.event.addListener(this.infoWindow, 'closeclick', function() {
+		this._ping.hideResponses();
+		this._ping.marker.__clicked = false;
+	  });
+	
 	return this;
 }
 Ping.prototype.addToMap = function(map){
@@ -156,9 +183,6 @@ Ping.prototype.addToMap = function(map){
 		this.createMarker();
 	}
 	this.marker.setMap(map);
-	for(var i=0; i<this.responses.length; i++){
-		this.responses[i].addToMap(map);
-	}
 	return this;
 }
 Ping.prototype.removeFromMap = function(map){
@@ -176,6 +200,16 @@ Ping.prototype.hideDetails = function(){
 	this.infoWindow.close();
 	return this;
 }	
+Ping.prototype.showResponses = function(map){
+	for(var i=0; i<this.responses.length; i++){
+		this.responses[i].addToMap(map || this.marker.map);
+	}
+}
+Ping.prototype.hideResponses = function(){
+	for(var i=0; i<this.responses.length; i++){
+		this.responses[i].removeFromMap();
+	}
+}
 
 
 

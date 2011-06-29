@@ -1,3 +1,29 @@
+div.close-button{
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	
+	background: #000;
+	border-radius: 20px;
+	height: 20px;
+	width: 20px;
+	padding-top:-2px;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 20px;
+	color: #fff;
+	text-shadow: 0 0 .2em #ccc;
+	text-align: center;
+	overflow: hidden;
+	border: 3px solid #fff;
+	
+	-moz-box-shadow: 0 0 8px #666;
+  	-webkit-box-shadow: 0 0 8px #666;
+  	box-shadow: 0 0 8px #666;
+
+	cursor: pointer;
+}
+
 
 section#create-form{
 	text-align: left;
@@ -39,7 +65,9 @@ section#create-form button#submit-create{
 	right: 0;
 	bottom: 30px; /*Set bottom value to HeightOfBottomFrameDiv*/
 	overflow: auto; 
-	background:rgba(255,255,255,.4);
+	background:#fff;
+	background-image: -webkit-repeating-linear-gradient(135deg, #FFF, #FFF 5px, #FEFEFE 5px, #FEFEFE 10px);
+	opacity: .6;
 	display: none;
 }
 #settings { 
@@ -59,12 +87,17 @@ section#create-form button#submit-create{
 }
 
 
+.bubble-responses h2{
+	max-width: 620px;
+	word-wrap: break-word;
+}
 .bubble-response-text{
 	margin-top: 10px;
 	font-weight: thin;
 	border-top: 1px solid #ccc;
 	padding: 5px;
 	cursor: pointer;
+	word-wrap: break-word;
 }
 .bubble-response-text strong{ 
 	font-weight: bold;

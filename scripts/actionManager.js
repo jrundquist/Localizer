@@ -78,7 +78,7 @@ actionManager.onSumbitCreate = function(txt, cat, anchor){
 						}));
 	sentPingsList[sentPingsList.length-1].addToMap(anchor.map);
 	
-	createMarker.setMap(null);
+	createMarker.setMap(null); 
 	
 	console.log('here', {
 							location: new Location(anchor.position),

@@ -84,16 +84,6 @@ function showCreateWindow(marker) {
 	
 }
 
-function placePing(location){
-  ping = new google.maps.Marker({
-      position: location, 
-	  animation: google.maps.Animation.DROP,
-      map: map
-  });
-  map.panTo(location);
-  return ping ;
-}
-
 
 function noLocation(error){
 	if ( error.code == error.PERMISSION_DENIED ){
