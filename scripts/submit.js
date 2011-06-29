@@ -2,8 +2,26 @@ function startSubmit(){
 	actionManager.onStartCreate($('#message-box'));
 }
 
-function submitForm(){
+function showCreateWindow(marker) {
+	if ( createBox ) createBox.close();
+  	
 	
+	$.get('/ajax/create-form.html', function(data) {
+		actionManager.onStartCreate(0, true);
+		
+	  	createBox = new google.maps.InfoWindow({ 
+			content: data,
+		}); 
+		google.maps.event.addListener(createBox,'closeclick', function() { 
+			createMarker.setMap(null); 
+			actionManager.onCreateClose();
+		});
+		createBox.open(map, marker);
+	});
+	
+}
+
+function submitForm(){
 	
 	console.log($('#create-form textarea'));
 	
@@ -34,10 +52,4 @@ function submitForm(){
 	setTimeout("actionManager.mapOnClickAddPing();", 500);
 	
 	return false;
-}
-
-function submitAnswer(){
-	
-	alert('reply will be sent');
-	closeRespondTo();
 }

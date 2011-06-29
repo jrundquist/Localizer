@@ -1,11 +1,10 @@
 var user = new User();
 
-
 var sentPingsList = new Array();
 var respondedToList = new Array();
-
 var masterList = new Array();
 
+var mapStyleTimer;
 
 
 respondedTo = new Ping({
@@ -58,6 +57,9 @@ sentPingsList[1].addResponse( new Ping({
 function showRecentPings(){
 	for ( var i = 0; i<sentPingsList.length; i++ ){
 		sentPingsList[i].addToMap(map);
+	}
+	for ( var i = 0; i<respondedToList.length; i++){
+		respondedToList[i].addToMap(map);
 	}
 }
 

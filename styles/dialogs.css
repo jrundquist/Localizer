@@ -79,11 +79,45 @@ section#create-form button#submit-create{
 	float: left;
 	margin: 20px;
 }
-.user-changes:first-child {
-	margin-top: 200px;
-}
 .user-changes {
 	margin-left: 200px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	border-top: 1px solid #ccc;
+	border-radius: 20px;
+	padding: 10px 0 0 15px;
+	width: 450px;
+}
+.user-changes input{
+	margin: 0px 0 15px 0;
+	font-size:20px;
+	padding: 5px;
+	width: 400px;
+	text-shadow: -1px 1px 1px #ccc;
+	border: 1px solid #666;
+	-moz-box-shadow: 0 0 5px #222 inset;
+	-webkit-box-shadow: 0 0 5px #222 inset;
+	box-shadow: 0 0 5px #222 inset;
+	background: rgba(0,0,0,.05);
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	outline:none;
+	
+	-webkit-transition: all 200ms ease-in;
+	-moz-transition: all 200ms ease-int;
+	-o-transition: all 200ms ease-in;
+	-ms-transition: all 200ms ease-in;		
+	transition: all 200ms ease-in;}
+
+.user-changes label{
+	display: block;
+	font-size: 26px;
+	text-shadow: -1px 1px 0 #ccc;
+}
+#settings button{
+	position: absolute;
+	bottom: 15px;
+	right: 20px;
 }
 
 
@@ -119,7 +153,7 @@ section#answer-form{
 	text-align: left;
 	margin: 0;
 	padding: 0;
-	width: 400px;
+	width: 460px;
 }
 
 section#answer-form h1{

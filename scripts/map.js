@@ -4,15 +4,26 @@ var createBox;
 function showMap(position) {
 	
 	var stylez = [];
+	
+	var searchingStyle = 	[
+							  {
+							    featureType: "all",
+							    elementType: "all",
+							    stylers: [
+							      { visibility: "on" },
+							      { saturation: -80 },
+							      { lightness: -57 }
+							    ]
+							  }
+							]
 
 	var myloc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
 		zoom: 13,
 		disableDefaultUI: true,
 		center: myloc,
-		mapTypeControlOptions: {
-			mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'custom']
-		}
+        navigationControlOptions: {style: 'SMALL',position: 'TOP_RIGHT'}, 
+        mapTypeId: 'ROADMAP'
 	}
 	
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -22,9 +33,13 @@ function showMap(position) {
 	}
 
 	var jayzMapType = new google.maps.StyledMapType(stylez, styledMapOptions);
+	var jayzMapType2 = new google.maps.StyledMapType(searchingStyle, {name: "Searching..."});
 
-	map.mapTypes.set('custom', jayzMapType);
-	map.setMapTypeId('custom');
+	map.mapTypes.set('map', jayzMapType);
+	map.setMapTypeId('map');
+	
+	map.mapTypes.set('searching', jayzMapType2);
+	
 	
 	var image = new google.maps.MarkerImage('images/blue-flag.png',
 	      // This marker is 20 pixels wide by 32 pixels tall.
@@ -65,25 +80,6 @@ function placeMarker(location) {
   return createMarker;
 }
 
-function showCreateWindow(marker) {
-	if ( createBox ) createBox.close();
-  	
-	
-	$.get('/ajax/create-form.html', function(data) {
-		actionManager.onStartCreate(0, true);
-		
-	  	createBox = new google.maps.InfoWindow({ 
-			content: data,
-		}); 
-		google.maps.event.addListener(createBox,'closeclick', function() { 
-			createMarker.setMap(null); 
-			actionManager.onCreateClose();
-		});
-		createBox.open(map, marker);
-	});
-	
-}
-
 
 function noLocation(error){
 	if ( error.code == error.PERMISSION_DENIED ){
@@ -94,19 +90,6 @@ function noLocation(error){
 }
 
 
-function RequestPermission(callback) {
-  window.webkitNotifications.requestPermission(callback);
-}
-
-function notif() {
-  if (window.webkitNotifications.checkPermission() > 0) {
-    RequestPermission(notif);
-  } else {
-    notification = window.webkitNotifications.createHTMLNotification('http://localhost:3000/images/rails.png');
-    notification.show();
-  }
-}
-
 function initializeMap() {
 	// One-shot position request.
 	navigator.geolocation.getCurrentPosition(showMap, 
@@ -116,4 +99,12 @@ function initializeMap() {
 												timeout: 5000,
 												maximumAge: 60
 											});
+}
+
+function clearMapOfBubbles() {
+	for ( var i = 0; i < masterList.length; i++ ){ 
+		masterList[i].hideDetails();
+	}
+	if (createMarker) createMarker.setMap(null);
+	if (createBox) createBox.close();
 }

@@ -18,7 +18,9 @@
 	<section class="user-changes">
 		<label for="home">Home Location</label>
 		<input type="text" name="home" id="home" value="Atlanta, GA, USA" />
-		<label for="distance">Max distance to send ping</label>
-		<input type="range" name="distance" id="distance" min="5" max="20" step="5" value="10" onChange="$('#slider-val').html($(this).val()+' km')"><span id="slider-val">5 km</span>
+		<label for="distance">Max distance to send ping</label><p id="slider-val">5 km</p>
+		
+		<input type="range" name="distance" id="distance" min="5" max="50" step="5" value="10" onChange="$('#slider-val').html($(this).val()+' km')">
 	</section>
+	<button type="button" onClick="$('#settings-underlay').click()" class="clean-gray">Save</button>
 </div>

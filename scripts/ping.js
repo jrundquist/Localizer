@@ -56,7 +56,7 @@ Ping.prototype.getType = function(){
 Ping.prototype.getCategory = function(){
 	return this.categery;
 }
-Ping.prototype.getCategory = function(){
+Ping.prototype.getCreationTime = function(){
 	return this.creationTime;
 }
 Ping.prototype.getResponses = function(){
@@ -92,6 +92,7 @@ Ping.prototype.setRepsonses = function(responses){
 }
 Ping.prototype.addResponse = function(response){
 	this.responses.push(response);
+	if ( this.infoWindow ) this.createInfoWindow();
 	return this;
 }
 Ping.prototype.createMarker = function(){
@@ -122,6 +123,7 @@ Ping.prototype.createMarker = function(){
 	    this._ping.showDetails();
 		this._ping.showResponses();
 		this.__clicked = true;
+		actionManager.onPingClick(this._ping);
 	  });
 	
 	google.maps.event.addListener(this.marker, 'mouseover', function() {
@@ -182,11 +184,13 @@ Ping.prototype.addToMap = function(map){
 	if ( !this.marker ) {
 		this.createMarker();
 	}
-	this.marker.setMap(map);
+	if ( this.marker.map != map ){
+		this.marker.setMap(map);
+	}
 	return this;
 }
 Ping.prototype.removeFromMap = function(map){
-	this.marker.setMap(null);
+	if ( this.marker ) this.marker.setMap(null);
 	return this;
 }
 Ping.prototype.showDetails = function(){
@@ -197,9 +201,13 @@ Ping.prototype.showDetails = function(){
 	return this;
 }
 Ping.prototype.hideDetails = function(){
-	this.infoWindow.close();
+	if ( this.infoWindow ){
+		google.maps.event.trigger(this.infoWindow, 'closeclick');
+		this.infoWindow.close();
+	}
 	return this;
 }	
+	
 Ping.prototype.showResponses = function(map){
 	for(var i=0; i<this.responses.length; i++){
 		this.responses[i].addToMap(map || this.marker.map);

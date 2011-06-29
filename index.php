@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="/scripts/login.js"></script>
 		<script type="text/javascript" src="/scripts/search.js"></script>
 		<script type="text/javascript" src="/scripts/submit.js"></script>
+		<script type="text/javascript" src="/scripts/respond.js"></script>
 		<script type="text/javascript" src="/scripts/settings.js"></script>
 		<script type="text/javascript" src="/scripts/user.js"></script>
 		<script type="text/javascript" src="/scripts/ping.js"></script>
@@ -43,11 +44,11 @@
 			<h1>The Localizer</h1>
 			<nav> 
 				<a href="javascript:startSubmit();">Submit</a>
-				<a href="/respond/">Respond</a>
+				<a href="javascript:startRespond();">Respond</a>
 				<a href="javascript:openSettings();">Settings</a>
 			</nav>
 			<section id="top-bar-search">
-				<input id="search-input" type="text" results="5" name="search" size="large" placeholder="Search Archives" onKeyPress="doOnEnter(this, event, preformSearch)">
+				<input id="search-input" type="text" results="5" name="search" size="large" placeholder="Search Archives" onKeyUp="preformSearch()" onKeyPress="doOnEnter(this, event, preformSearch)">
 			</section>
 		</section>
 		<section id="bottom-bar" class="shadow">
@@ -104,24 +105,26 @@
 		<div id="message-box" class="shadow"></div>
 		<div id="activity-box" class="shadow">
 			<header>Recent Activity</header>
-			<section class="activity">
-				<h1 class="create" onClick="(sentPingsList[0].addToMap(map).showDetails())"><script>document.write(sentPingsList[0].getText())</script></h1>
-				<div class="info">
-					<p>ping sent 2 minutes ago</p>
-				</div>
-			</section>
-			<section class="activity">
-				<h1 class="create" onClick="(sentPingsList[1].addToMap(map).showDetails())"><script>document.write(sentPingsList[1].getText())</script></h1>
-				<div class="reply" onClick="(sentPingsList[1].addToMap(map).showDetails())"><script>document.write(sentPingsList[1].getResponses().length)</script> <small>new replies</small></div>
-				<div class="info">
-					<p>ping sent 1 day ago</p>
-				</div>
-			</section>
-			<section class="activity">
-				<h1 class="respond" onClick="(respondedToList[0].addToMap(map).showDetails())"><script>document.write(respondedToList[0].getText())</script></h1>
-				<div class="info">
-					<p>reply sent 3 days ago</p>
-				</div>
+			<section id="activity-container">
+				<section class="activity" onClick="clearMapOfBubbles();google.maps.event.trigger(sentPingsList[0].addToMap(map).marker, 'click')">
+					<h1 class="create"><script>document.write(sentPingsList[0].getText())</script></h1>
+					<div class="info">
+						<p>ping sent 2 minutes ago</p>
+					</div>
+				</section>
+				<section class="activity" onClick="clearMapOfBubbles();google.maps.event.trigger(sentPingsList[1].addToMap(map).marker, 'click')">
+					<h1 class="create"><script>document.write(sentPingsList[1].getText())</script></h1>
+					<div class="reply"><script>document.write(sentPingsList[1].getResponses().length)</script> <small>new replies</small></div>
+					<div class="info">
+						<p>ping sent 1 day ago</p>
+					</div>
+				</section>
+				<section class="activity" onClick="clearMapOfBubbles();google.maps.event.trigger(respondedToList[0].addToMap(map).marker, 'click')">
+					<h1 class="respond"><script>document.write(respondedToList[0].getText())</script></h1>
+					<div class="info">
+						<p>reply sent 3 days ago</p>
+					</div>
+				</section>
 			</section>
 		</div>
 
