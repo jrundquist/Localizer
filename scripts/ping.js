@@ -128,12 +128,14 @@ Ping.prototype.createMarker = function(){
 	
 	google.maps.event.addListener(this.marker, 'mouseover', function() {
 		this._ping.showResponses();
+		$('#bottom-notes').html(this._ping.category+' - '+this._ping.text);
 	  });
 	
 	google.maps.event.addListener(this.marker, 'mouseout', function() {
 		if ( this.__clicked != true ){
 			this._ping.hideResponses();
 		}
+		$('#bottom-notes').html('');
 	  });
 	
 	this.createInfoWindow();

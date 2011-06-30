@@ -12,13 +12,13 @@ function preformSearch(){
 	map.setMapTypeId('searching');
     
 	if (mapStyleTimer) clearTimeout(mapStyleTimer);
-	mapStyleTimer = setTimeout("map.setMapTypeId('map');", 1000);
+	mapStyleTimer = setTimeout("map.setMapTypeId('map');", 1200);
 
 	for( var i=0;i<masterList.length; i++ ){
 		masterList[i].addToMap(map);
-		if ( !masterList[i].text ) continue;
+		if ( !masterList[i].text || !masterList[i].category) continue;
 		console.log(masterList[i].text);
-		if ( patt.test(masterList[i].text) == true){
+		if ( patt.test(masterList[i].text) == true || patt.test(masterList[i].category) == true){
 			results.push(masterList[i]);
 		}else{
 			masterList[i].removeFromMap();

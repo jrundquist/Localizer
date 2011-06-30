@@ -40,6 +40,7 @@
 				</div>
 			</div>
 		</section>
+		
 		<section id="top-bar" class="shadow">
 			<h1>The Localizer</h1>
 			<nav> 
