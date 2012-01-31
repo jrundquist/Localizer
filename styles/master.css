@@ -1,6 +1,14 @@
+html{
+	height: 100%;
+	width: 100%;
+}
 body{ 
 	font-family: 'Jura', arial, serif;
 	overflow-x: hidden;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 }
 a { 
 	color:#099;

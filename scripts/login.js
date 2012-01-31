@@ -1,6 +1,5 @@
 function validateRegister(){
 	
-	
 	$('section#login section#register-form input').each(function(){
 		$(this).removeClass('error');
 		if ( $(this).val() == '' ){

@@ -20,14 +20,19 @@ function showMap(position) {
 	var myloc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
 		zoom: 13,
-		disableDefaultUI: true,
 		center: myloc,
-        navigationControlOptions: {style: 'SMALL',position: 'TOP_RIGHT'}, 
+		navigationControlOptions: {  
+		    style: google.maps.NavigationControlStyle.ANDROID  
+		  },
         mapTypeId: 'ROADMAP'
 	}
 	
+	document.getElementById("map_canvas").style.height = $('#map_canvas').height()
+	document.getElementById("map_canvas").style.width = $('#map_canvas').width();
+	
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+	
 	var styledMapOptions = {
 		name: "Localizer"
 	}
@@ -93,12 +98,12 @@ function noLocation(error){
 function initializeMap() {
 	// One-shot position request.
 	navigator.geolocation.getCurrentPosition(showMap, 
-											noLocation,
-											{
-												enableHighAccuracy: true,
-												timeout: 5000,
-												maximumAge: 60
-											});
+												noLocation,
+												{
+													enableHighAccuracy: true,
+													timeout: 5000,
+													maximumAge: 60
+												});
 }
 
 function clearMapOfBubbles() {
