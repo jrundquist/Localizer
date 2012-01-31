@@ -17,7 +17,7 @@ function showMap(position) {
 							  }
 							]
 
-	var myloc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	var myloc = new google.maps.LatLng(41.39634, 2.1841);//position.coords.latitude, position.coords.longitude);
 	var myOptions = {
 		zoom: 13,
 		center: myloc,
